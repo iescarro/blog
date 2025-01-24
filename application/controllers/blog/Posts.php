@@ -13,8 +13,9 @@ class Posts extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->helper(['html', 'url', 'form', 'post']);
-		$this->load->library(['form_validation', 'layout']);
-		$this->load->model(['post_model']);
+		$this->load->model('blog/post_model');
+		$this->load->library('form_validation');
+		$this->load->library('layout');
 		$this->layout->set('layouts/app');
 	}
 

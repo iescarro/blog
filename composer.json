@@ -5,7 +5,8 @@
     "license": "MIT",
     "require": {
         "iescarro/codeigniter3-framework": "^0.0.24",
-        "symfony/console": "^7.1"
+        "symfony/console": "^7.1",
+        "iescarro/codeigniter3-auth": "^0.0.15"
     },
     "scripts": {
         "post-install-cmd": [
