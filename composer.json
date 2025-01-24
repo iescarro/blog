@@ -9,7 +9,7 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php vendor/iescarro/blog/install"
+            "php ./vendor/iescarro/blog/install"
         ]
     },
     "autoload": {
