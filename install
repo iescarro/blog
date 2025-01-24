@@ -1,0 +1,19 @@
+<?php
+
+$source = __DIR__ . '/application/controllers/blog/posts';
+$destination = __DIR__ . '/../../../application/blog';
+
+// Create the destination directory if it doesn't exist
+if (!is_dir($destination)) {
+    mkdir($destination, 0755, true);
+}
+
+// Copy files from source to destination
+$files = scandir($source);
+foreach ($files as $file) {
+    if ($file !== '.' && $file !== '..') {
+        copy($source . '/' . $file, $destination . '/' . $file);
+    }
+}
+
+echo "Files copied successfully.";
