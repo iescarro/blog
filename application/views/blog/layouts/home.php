@@ -29,17 +29,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <?php echo anchor('blog/dashboard', 'Dashboard', 'class="nav-link" aria-current="page"'); ?>
+            <?php echo anchor('blog/home', 'Home', 'class="nav-link" aria-current="page"'); ?>
           </li>
-          <li class="nav-item">
-            <?php echo anchor('blog/posts', 'Posts', 'class="nav-link"'); ?>
-          </li>
-          <li class="nav-item">
-            <?php echo anchor('blog/categories', 'Categories', 'class="nav-link"'); ?>
-          </li>
-          <li class="nav-item">
-            <?php echo anchor('auth/logout', 'Logout', 'class="nav-link"'); ?>
-          </li>
+          <?php if ($this->session->userdata('user_id')): ?>
+            <li class="nav-item">
+              <?php echo anchor('auth/logout', 'Logout', 'class="nav-link"'); ?>
+            </li>
+          <?php endif; ?>
           <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Account

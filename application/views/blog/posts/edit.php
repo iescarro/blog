@@ -1,21 +1,21 @@
 <h3>Edit post</h3>
-<?= form_open('blog/posts/edit/' . $post->id) ?>
+<?php echo form_open('blog/posts/edit/' . $post->id) ?>
 <p>
 	Title<br>
-	<?= form_input('title', $post->title, 'class="form-control"'); ?>
+	<?php echo form_input('title', $post->title, 'class="form-control"'); ?>
 </p>
 <p>
 	Content<br>
-	<?= form_input('content', $post->content, 'class="form-control"'); ?>
+	<?php echo form_textarea('content', $post->content, 'class="form-control"'); ?>
 </p>
 
 <p>
-	<?= form_submit('submit', 'Update post', 'class="btn btn-outline-success"') ?>
-	or <?= anchor('posts', 'cancel'); ?>
+	<?php echo form_submit('submit', 'Update post', 'class="btn btn-outline-success"') ?>
+	or <?php echo anchor('blog/posts', 'cancel'); ?>
 </p>
 <?= form_close() ?>
 
-<?= form_open('posts/delete/' . $post->id, array('onsubmit', 'return confirmDelete')) ?>
+<?php echo form_open('blog/posts/delete/' . $post->id, array('onsubmit', 'return confirmDelete')) ?>
 <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
-<button type='submit' class="btn btn-outline-success">Delete</button>
-<?= form_close() ?>
+<button type='submit' class="btn btn-outline-danger">Delete</button>
+<?php echo form_close() ?>

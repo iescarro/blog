@@ -11,6 +11,8 @@ class Post_model extends CI_Model
 
 	function save($post)
 	{
+		$this->db->set('created_at', now());
+		$this->db->set('updated_at', now());
 		$this->db->insert('posts', $post);
 		return $this->db->insert_id();
 	}
@@ -22,11 +24,15 @@ class Post_model extends CI_Model
 
 	function find_all()
 	{
-		return $this->db->get('posts')->result();
+		$this->db->select('p.*, u.name author');
+		$this->db->select("(select count(c.id) from comments c where c.post_id = p.id) comments_count");
+		$this->db->join('users u', 'u.id = p.user_id');
+		return $this->db->get('posts p')->result();
 	}
 
 	function update($post, $id)
 	{
+		$this->db->set('updated_at', now());
 		$this->db->update('posts', $post, ['id' => $id]);
 	}
 

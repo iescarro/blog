@@ -1,16 +1,16 @@
 <h3>Create post</h3>
-<?= form_open('blog/posts/create'); ?>
+<?php echo form_open('blog/posts/create'); ?>
 <p>
 	Title<br>
-	<?= form_input('title', $this->input->post('title'), 'class="form-control"'); ?>
+	<?php echo form_input('title', $this->input->post('title'), 'class="form-control"'); ?>
 </p>
 <p>
 	Content<br>
-	<?= form_input('content', $this->input->post('content'), 'class="form-control"'); ?>
+	<?php echo form_textarea('content', $this->input->post('content'), 'class="form-control"'); ?>
 </p>
 
 <p>
-	<?= form_submit('submit', 'Save post', 'class="btn btn-outline-success"'); ?>
-	or <?= anchor('posts', 'cancel'); ?>
+	<?php echo form_submit('submit', 'Save post', 'class="btn btn-outline-success"'); ?>
+	or <?php echo anchor('blog/posts', 'cancel'); ?>
 </p>
-<?= form_close(); ?>
+<?php echo form_close(); ?>
