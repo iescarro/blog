@@ -1,19 +1,82 @@
 <?php
 
-$source = __DIR__ . '/application/controllers/blog/posts';
-$destination = __DIR__ . '/../../../application/controllers/blog';
+// define('ROOT_DIR', '/../../..');
+define('ROOT_DIR', 'temp');
 
-// Create the destination directory if it doesn't exist
-if (!is_dir($destination)) {
-    mkdir($destination, 0755, true);
+$controllers_source = __DIR__ . '/application/controllers/blog';
+$controllers_destination = __DIR__ . '/' . ROOT_DIR . '/application/controllers/blog';
+
+$models_source = __DIR__ . '/application/models/blog';
+$models_destination = __DIR__ . '/' . ROOT_DIR . '/application/models/blog';
+
+$helpers_source = __DIR__ . '/application/helpers/blog';
+$helpers_destination = __DIR__ . '/' . ROOT_DIR . '/application/helpers/blog';
+
+$views_source = __DIR__ . '/application/views/blog';
+$views_destination = __DIR__ . '/' . ROOT_DIR . '/application/views/blog';
+
+$directories = array(
+    $controllers_source => $controllers_destination,
+    $models_source => $models_destination,
+    $helpers_source => $helpers_destination,
+    $views_source => $views_destination,
+);
+
+foreach ($directories as $source => $destination) {
+    // copy_files($source, $destination);
+    copy_directory($source, $destination);
 }
 
-// Copy files from source to destination
-$files = scandir($source);
-foreach ($files as $file) {
-    if ($file !== '.' && $file !== '..') {
-        copy($source . '/' . $file, $destination . '/' . $file);
+function copy_files($source, $destination)
+{
+    // echo 'source: ' . $source . ', destination: ' . $destination . PHP_EOL;
+    // Create the destination directory if it doesn't exist
+    if (!is_dir($destination)) {
+        mkdir($destination, 0755, true);
     }
+
+    // Copy files from source to destination
+    $files = scandir($source);
+    foreach ($files as $file) {
+        if ($file !== '.' && $file !== '..') {
+            copy($source . '/' . $file, $destination . '/' . $file);
+        }
+    }
+}
+
+function copy_directory($source, $destination)
+{
+    // Ensure source directory exists
+    if (!is_dir($source)) {
+        return false;
+    }
+
+    // Create destination directory if it doesn't exist
+    if (!is_dir($destination)) {
+        mkdir($destination, 0755, true);
+    }
+
+    // Scan the source directory
+    $files = scandir($source);
+
+    foreach ($files as $file) {
+        if ($file == '.' || $file == '..') {
+            continue;
+        }
+
+        $srcPath = $source . DIRECTORY_SEPARATOR . $file;
+        $destPath = $destination . DIRECTORY_SEPARATOR . $file;
+
+        if (is_dir($srcPath)) {
+            // Recursively copy subdirectories
+            copy_directory($srcPath, $destPath);
+        } else {
+            // Copy files
+            copy($srcPath, $destPath);
+        }
+    }
+
+    return true;
 }
 
 echo "Files copied successfully.";
