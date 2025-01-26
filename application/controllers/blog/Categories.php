@@ -13,7 +13,7 @@ class Categories extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->helper(['html', 'url', 'form', 'category']);
+		$this->load->helper(['html', 'url', 'form', 'blog/category']);
 		$this->load->library(['form_validation', 'layout', 'session']);
 		redirect_if(!$this->session->userdata('user_id'), 'auth/login');
 		$this->load->model(['blog/category_model']);
@@ -50,6 +50,6 @@ class Categories extends CI_Controller
 	function delete($id)
 	{
 		$this->category_model->delete($id);
-		redirect('categories');
+		redirect('blog/categories');
 	}
 }

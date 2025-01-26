@@ -19,7 +19,7 @@
 </p>
 <?= form_close() ?>
 
-<?php echo form_open('categories/delete/' . $category->id, array('onsubmit', 'return confirmDelete')) ?>
+<?php echo form_open('blog/categories/delete/' . $category->id, array('onsubmit', 'return confirmDelete')) ?>
 <?php echo form_hidden($this->security->get_csrf_token_name(), $this->security->get_csrf_hash()); ?>
 <button type='submit' class="btn btn-outline-danger">Delete</button>
 <?php echo form_close() ?>
