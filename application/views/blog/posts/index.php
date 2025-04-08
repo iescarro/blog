@@ -1,6 +1,6 @@
 <h3>Posts</h3>
 <p>
-	<?php echo anchor('blog/posts/create', 'Create Post', 'class="btn btn-outline-success"') ?>
+	<?php echo anchor('blog/posts/create', 'Create post', 'class="btn btn-outline-success"') ?>
 </p>
 <table class="table table-hover">
 	<tr>
