@@ -1,5 +1,5 @@
 <p>
-    📢 <?php echo anchor('blog', config_item('app_name')); ?>
+    📢 <?php echo anchor('.', config_item('app_name')); ?>
     | <?php echo anchor('blog/category/' . $post->category_id, $post->category_name); ?>
 </p>
 <h3><?php echo $post->title; ?></h3>
