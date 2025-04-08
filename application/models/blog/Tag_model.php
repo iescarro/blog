@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Blog
+ *
+ * Minimalist personal publishing platform
+ *
+ * Copyright (c) 2025 Blog. All rights reserved.
+ *
+ * Blog and its user interface are protected by trademark
+ * and other pending or existing intellectual property
+ * rights in the Philippines.
+ */
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Tag_model extends CI_Model

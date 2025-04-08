@@ -1,5 +1,16 @@
 <?php
 
+/**
+ * Blog
+ *
+ * Minimalist personal publishing platform
+ *
+ * Copyright (c) 2025 Blog. All rights reserved.
+ *
+ * Blog and its user interface are protected by trademark
+ * and other pending or existing intellectual property
+ * rights in the Philippines.
+ */
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Post_model extends CI_Model
@@ -19,13 +30,21 @@ class Post_model extends CI_Model
 
 	function read($id)
 	{
-		return $this->db->get_where('posts', ['id' => $id])->row();
+		$this->db->select('p.*');
+		$this->db->select('u.name author');
+		$this->db->select('c.name category_name');
+		$this->db->join('categories c', 'c.id = p.category_id', 'left outer');
+		$this->db->join('users u', 'u.id = p.user_id');
+		return $this->db->get_where('posts p', ['p.id' => $id])->row();
 	}
 
 	function find_all()
 	{
-		$this->db->select('p.*, u.name author');
+		$this->db->select('p.*');
+		$this->db->select('u.name author');
+		$this->db->select('c.name category_name');
 		$this->db->select("(select count(c.id) from comments c where c.post_id = p.id) comments_count");
+		$this->db->join('categories c', 'c.id = p.category_id', 'left outer');
 		$this->db->join('users u', 'u.id = p.user_id');
 		return $this->db->get('posts p')->result();
 	}
