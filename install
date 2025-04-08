@@ -12,6 +12,9 @@ $models_destination = __DIR__ . '/' . ROOT_DIR . '/application/models/blog';
 $helpers_source = __DIR__ . '/application/helpers/blog';
 $helpers_destination = __DIR__ . '/' . ROOT_DIR . '/application/helpers/blog';
 
+$migrations_source = __DIR__ . '/application/migrations';
+$migrations_destination = __DIR__ . '/' . ROOT_DIR . '/application/migrations';
+
 $views_source = __DIR__ . '/application/views/blog';
 $views_destination = __DIR__ . '/' . ROOT_DIR . '/application/views/blog';
 
@@ -19,6 +22,7 @@ $directories = array(
     $controllers_source => $controllers_destination,
     $models_source => $models_destination,
     $helpers_source => $helpers_destination,
+    $migrations_source => $migrations_destination,
     $views_source => $views_destination,
 );
 
