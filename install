@@ -1,7 +1,7 @@
 <?php
 
-// define('ROOT_DIR', '/../../..');
-define('ROOT_DIR', 'temp');
+define('ROOT_DIR', '/../../..');
+// define('ROOT_DIR', 'temp');
 
 $controllers_source = __DIR__ . '/application/controllers/blog';
 $controllers_destination = __DIR__ . '/' . ROOT_DIR . '/application/controllers/blog';
