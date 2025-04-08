@@ -11,6 +11,5 @@
   </p>
   <p>
     <?php echo post_teaser($post->content,  300); ?>
-    <!-- <?php echo anchor('blog/home/post/' . $post->id, 'Read more'); ?> -->
   </p>
 <?php endforeach; ?>

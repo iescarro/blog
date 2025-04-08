@@ -37,9 +37,17 @@ class Home extends CI_Controller
     $this->layout->view('blog/home', $data);
   }
 
-  function post($id = 0)
+  function category($category_id = 0)
   {
-    $data['post'] = $this->post_model->read($id);
+    $data['category'] = $this->category_model->read($category_id);
+    $data['recent_posts'] = $this->post_model->find_by_category($category_id);
+    $data['categories'] = $this->category_model->find_all();
+    $this->layout->view('blog/category', $data);
+  }
+
+  function post($post_id = 0)
+  {
+    $data['post'] = $this->post_model->read($post_id);
     $data['categories'] = $this->category_model->find_all();
     $this->layout->view('blog/post', $data);
   }

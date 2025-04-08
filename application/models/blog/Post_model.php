@@ -49,6 +49,18 @@ class Post_model extends CI_Model
 		return $this->db->get('posts p')->result();
 	}
 
+	function find_by_category($category_id)
+	{
+		$this->db->select('p.*');
+		$this->db->select('u.name author');
+		$this->db->select('c.name category_name');
+		$this->db->select("(select count(c.id) from comments c where c.post_id = p.id) comments_count");
+		$this->db->join('categories c', 'c.id = p.category_id', 'left outer');
+		$this->db->join('users u', 'u.id = p.user_id');
+		$this->db->where('p.category_id', $category_id);
+		return $this->db->get('posts p')->result();
+	}
+
 	function update($post, $id)
 	{
 		$this->db->set('updated_at', now());

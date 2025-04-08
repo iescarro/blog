@@ -1,6 +1,6 @@
 <p>
-    📢 <?php echo anchor('blog', config_item('app_name')); ?>
-    | <?php echo anchor('blog/category/' . $post->category_id, $post->category_name); ?>
+    📢 <?php echo anchor('blog/home', config_item('app_name')); ?>
+    | <?php echo anchor('blog/home/category/' . $post->category_id, $post->category_name); ?>
 </p>
 <h3><?php echo $post->title; ?></h3>
 <?php if ($this->session->userdata('user_id')): ?>

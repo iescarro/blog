@@ -38,7 +38,7 @@
           </li>
           <?php foreach ($categories as $category): ?>
             <li class="nav-item">
-              <?php echo anchor('blog/category/' . $category->id . '/' . str_slug($category->name), $category->name, 'class="nav-link"'); ?>
+              <?php echo anchor('blog/home/category/' . $category->id . '/' . str_slug($category->name), $category->name, 'class="nav-link"'); ?>
             </li>
           <?php endforeach; ?>
         </ul>
@@ -66,7 +66,7 @@
           </li>
           <?php foreach ($categories as $category): ?>
             <li class="nav-item">
-              <?php echo anchor('blog/category/' . $category->id, $category->name, 'class="nav-link"'); ?>
+              <?php echo anchor('blog/home/category/' . $category->id, $category->name, 'class="nav-link"'); ?>
             </li>
           <?php endforeach; ?>
         </ul>
@@ -74,7 +74,7 @@
 
       <div class="d-flex flex-wrap justify-content-center mb-3">
         <?php foreach ($categories as $category): ?>
-          <?php echo anchor('blog/category/' . $category->id, $category->name, 'class="nav-link px-2"'); ?>
+          <?php echo anchor('blog/home/category/' . $category->id, $category->name, 'class="nav-link px-2"'); ?>
         <?php endforeach; ?>
       </div>
 

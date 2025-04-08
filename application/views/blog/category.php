@@ -1,18 +1,17 @@
-<p>
-    📢 <?php echo anchor('.', config_item('app_name')); ?>
-    | <?php echo anchor('blog/category/' . $post->category_id, $post->category_name); ?>
-</p>
-<h3><?php echo $post->title; ?></h3>
-<?php if ($this->session->userdata('user_id')): ?>
+<h3><?php echo $category->name; ?></h3>
+
+<?php foreach ($recent_posts as $post): ?>
+    <h4>
+        <?php echo anchor('blog/home/post/' . $post->id . '/' . str_slug($post->title), $post->title); ?>
+    </h4>
     <p>
-        <?php echo anchor('blog/posts/edit/' . $post->id, 'Edit'); ?>
+        <small>
+            Author: <?php echo $post->author; ?> |
+            Published: <?php echo date('M d, Y', strtotime($post->created_at)); ?> |
+            <?php echo $post->comments_count; ?> comments
+        </small>
     </p>
-<?php endif; ?>
-
-<p>
-    <small>
-        <?php echo date('M d, Y', strtotime($post->created_at)); ?>
-    </small>
-</p>
-
-<?php echo nl2br($post->content); ?>
+    <p>
+        <?php echo post_teaser($post->content,  300); ?>
+    </p>
+<?php endforeach; ?>
