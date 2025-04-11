@@ -9,5 +9,5 @@
 </p>
 
 ```
-composer require iescarro/blog
+composer require iescarro/blog && php vendor/iescarro/blog/install
 ```
