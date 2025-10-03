@@ -6,12 +6,7 @@
   "require": {
     "iescarro/codeigniter3-framework": "^0.0.32",
     "symfony/console": "^7.1",
-    "iescarro/codeigniter3-auth": "^0.0.15"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "php ./vendor/iescarro/blog/install"
-    ]
+    "iescarro/codeigniter3-auth": "^0.0.16"
   },
   "autoload": {
     "psr-4": {
