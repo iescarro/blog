@@ -1,5 +1,6 @@
 {
   "name": "iescarro/blog",
+  "type": "composer-plugin",
   "description": "Simple blog implementation",
   "homepage": "https://github.com/iescarro/blog",
   "license": "MIT",
