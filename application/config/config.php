@@ -25,7 +25,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost:9000';
+$config['base_url'] = getenv('APP_URL');
+$config['app_name'] = getenv('APP_NAME');
 
 /*
 |--------------------------------------------------------------------------
