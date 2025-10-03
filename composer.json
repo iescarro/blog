@@ -1,28 +1,28 @@
 {
-    "name": "iescarro/blog",
-    "description": "Simple blog implementation",
-    "homepage": "https://github.com/iescarro/blog",
-    "license": "MIT",
-    "require": {
-        "iescarro/codeigniter3-framework": "^0.0.24",
-        "symfony/console": "^7.1",
-        "iescarro/codeigniter3-auth": "^0.0.15"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "php ./vendor/iescarro/blog/install"
-        ]
-    },
-    "autoload": {
-        "psr-4": {
-            "CodeIgniter3\\": [
-                "application/libraries",
-                "application/core"
-            ],
-            "CodeIgniter3\\Components\\": [
-                "application/components"
-            ],
-            "CodeIgniter3\\Commands\\": "application/libraries/commands"
-        }
+  "name": "iescarro/blog",
+  "description": "Simple blog implementation",
+  "homepage": "https://github.com/iescarro/blog",
+  "license": "MIT",
+  "require": {
+    "iescarro/codeigniter3-framework": "^0.0.32",
+    "symfony/console": "^7.1",
+    "iescarro/codeigniter3-auth": "^0.0.15"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php ./vendor/iescarro/blog/install"
+    ]
+  },
+  "autoload": {
+    "psr-4": {
+      "CodeIgniter3\\": [
+        "application/libraries",
+        "application/core"
+      ],
+      "CodeIgniter3\\Components\\": [
+        "application/components"
+      ],
+      "CodeIgniter3\\Commands\\": "application/libraries/commands"
     }
+  }
 }
