@@ -1,7 +1,7 @@
 <h3>My home</h3>
 
 <p>
-    <?php echo anchor('blog/home', '👁️ View my blog', 'class="btn btn-outline-success"') ?>
+    <?php echo anchor('blog/home', '👁️ View my blog', 'class="btn btn-outline-success" target="_blank"') ?>
 </p>
 <p>
     Your central hub for taking the next steps, accessing our support center, and navigating through quick links.
