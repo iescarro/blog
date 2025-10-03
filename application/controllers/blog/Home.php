@@ -15,6 +15,7 @@ class Home extends CI_Controller
 {
   var $post_model;
   var $category_model;
+  var $post_view_model;
 
   var $layout;
   var $session;
@@ -22,9 +23,10 @@ class Home extends CI_Controller
   function __construct()
   {
     parent::__construct();
-    $this->load->helper(['html', 'url', 'blog/app', 'blog/post', 'blog/category']);
+    $this->load->helper(['html', 'url', 'blog/app', 'blog/post', 'blog/category', 'blog/post_view']);
     $this->load->model('blog/post_model');
     $this->load->model('blog/category_model');
+    $this->load->model('blog/post_view_model');
     $this->load->library('session');
     $this->load->library('layout');
     $this->layout->set('blog/layouts/home');
@@ -47,6 +49,8 @@ class Home extends CI_Controller
 
   function post($post_id = 0)
   {
+    $post_view = post_view_form($post_id);
+    $this->post_view_model->save($post_view);
     $data['post'] = $this->post_model->read($post_id);
     $data['categories'] = $this->category_model->find_all();
     $this->layout->view('blog/post', $data);
