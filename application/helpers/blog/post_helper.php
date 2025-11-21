@@ -13,6 +13,21 @@
  */
 defined('BASEPATH') or exit('No direct script access allowed');
 
+function blog_posts()
+{
+	$CI = &get_instance();
+	$CI->load->model('blog/post_model');
+	$posts = $CI->post_model->find_recent();
+	foreach ($posts as $post) {
+		blog_post($post);
+	}
+}
+
+function blog_post($post)
+{
+	load_view('post', ['post' => $post]);
+}
+
 function post_teaser($content, $length = 300)
 {
 	$teaser = substr($content, 0, $length);
@@ -24,12 +39,12 @@ function post_teaser($content, $length = 300)
 
 function post_form($user_id)
 {
-	$obj = &get_instance();
+	$CI = &get_instance();
 	return [
 		'user_id' => $user_id,
-		'category_id' => $obj->input->post('category_id'),
-		'title' => $obj->input->post('title'),
-		'content' => $obj->input->post('content'),
+		'category_id' => $CI->input->post('category_id'),
+		'title' => $CI->input->post('title'),
+		'content' => $CI->input->post('content'),
 
 	];
 }

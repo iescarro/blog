@@ -16,6 +16,7 @@ class Home extends CI_Controller
   var $post_model;
   var $category_model;
   var $post_view_model;
+  var $page_model;
 
   var $layout;
   var $session;
@@ -24,19 +25,17 @@ class Home extends CI_Controller
   {
     parent::__construct();
     $this->load->helper(['html', 'url', 'blog/app', 'blog/post', 'blog/category', 'blog/post_view']);
-    $this->load->model('blog/post_model');
-    $this->load->model('blog/category_model');
-    $this->load->model('blog/post_view_model');
-    $this->load->library('session');
-    $this->load->library('layout');
-    $this->layout->set('blog/layouts/home');
+    $this->load->model(['blog/post_model', 'blog/category_model', 'blog/post_view_model', 'blog/page_model']);
+    $this->load->library(['session', 'layout']);
+    $this->layout->theme(config_item('theme'));
+    $this->layout->set('layouts/app');
   }
 
   function index()
   {
     $data['recent_posts'] = $this->post_model->find_all();
     $data['categories'] = $this->category_model->find_all();
-    $this->layout->view('blog/home', $data);
+    $this->layout->view('home', $data);
   }
 
   function category($category_id = 0)
@@ -44,7 +43,14 @@ class Home extends CI_Controller
     $data['category'] = $this->category_model->read($category_id);
     $data['recent_posts'] = $this->post_model->find_by_category($category_id);
     $data['categories'] = $this->category_model->find_all();
-    $this->layout->view('blog/category', $data);
+    $this->layout->view('category', $data);
+  }
+
+  function posts()
+  {
+    $data['posts'] = $this->post_model->find_all();
+    $data['categories'] = $this->category_model->find_all();
+    $this->layout->view('posts', $data);
   }
 
   function post($post_id = 0)
@@ -53,6 +59,13 @@ class Home extends CI_Controller
     $this->post_view_model->save($post_view);
     $data['post'] = $this->post_model->read($post_id);
     $data['categories'] = $this->category_model->find_all();
-    $this->layout->view('blog/post', $data);
+    $this->layout->view('post', $data);
+  }
+
+  function page($page_id = 0)
+  {
+    $data['page'] = array(); //$this->page_model->read($page_id);
+    $data['categories'] = $this->category_model->find_all();
+    $this->layout->view('page', $data);
   }
 }

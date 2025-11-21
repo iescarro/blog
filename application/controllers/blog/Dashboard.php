@@ -23,7 +23,7 @@ class Dashboard extends CI_Controller
         redirect_if(!$this->session->userdata('user_id'), 'auth/login');
         $this->load->model(['blog/post_view_model']);
         $this->load->library('layout');
-        $this->layout->set('blog/layouts/app');
+        $this->layout->set('blog/layouts/admin');
     }
 
     function index()

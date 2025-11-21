@@ -46,8 +46,23 @@ class Post_model extends CI_Model
 		$this->db->select("(select count(c.id) from comments c where c.post_id = p.id) comments_count");
 		$this->db->join('categories c', 'c.id = p.category_id', 'left outer');
 		$this->db->join('users u', 'u.id = p.user_id');
+		$this->db->order_by('p.created_at', 'desc');
 		return $this->db->get('posts p')->result();
 	}
+
+	function find_recent($limit = 5)
+	{
+		$this->db->select('p.*');
+		$this->db->select('u.name author');
+		$this->db->select('c.name category_name');
+		$this->db->select("(select count(c.id) from comments c where c.post_id = p.id) comments_count");
+		$this->db->join('categories c', 'c.id = p.category_id', 'left outer');
+		$this->db->join('users u', 'u.id = p.user_id');
+		$this->db->order_by('p.created_at', 'desc');
+		$this->db->limit($limit);
+		return $this->db->get('posts p')->result();
+	}
+
 
 	function find_by_category($category_id)
 	{

@@ -28,7 +28,7 @@ class Categories extends CI_Controller
     $this->load->library(['form_validation', 'layout', 'session']);
     redirect_if(!$this->session->userdata('user_id'), 'auth/login');
     $this->load->model(['blog/category_model']);
-    $this->layout->set('blog/layouts/app');
+    $this->layout->set('blog/layouts/admin');
   }
 
   function index()

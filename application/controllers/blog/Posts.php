@@ -32,7 +32,7 @@ class Posts extends CI_Controller
     $this->load->model('blog/category_model');
     $this->load->library('form_validation');
     $this->load->library('layout');
-    $this->layout->set('blog/layouts/app');
+    $this->layout->set('blog/layouts/admin');
   }
 
   function index()
